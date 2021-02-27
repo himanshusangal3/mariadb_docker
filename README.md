@@ -59,6 +59,7 @@ $ docker run -d \
     -p 3306:3306 \
     -e MYSQL_USERNAME=root \
     -e MYSQL_PASSWORD=changeit \
+    -e MYSQL_DBNAME=wiki \
     mariadb:1.0
 ```
 
