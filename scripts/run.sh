@@ -13,5 +13,5 @@ fi
 
 # Start MySQL
 echo "Starting MySQL..."
-/usr/sbin/mysqld
-© 2021 GitHub, Inc.
+mysqld_safe
+#© 2021 GitHub, Inc.

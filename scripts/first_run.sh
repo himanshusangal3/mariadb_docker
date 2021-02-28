@@ -11,6 +11,7 @@ while ! nc -vz localhost 3306; do sleep 1; done
 echo "Creating user: \"$USER\"..."
 /usr/bin/mysql -uroot -e "CREATE USER '$USER'@'%' IDENTIFIED BY '$PASS'"
 /usr/bin/mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO '$USER'@'%' WITH GRANT OPTION"
+/usr/bin/mysql -uroot -e "FLUSH PRIVILEGES"
 
 # Create dabatase
 if [ ! -z "$DB" ]; then

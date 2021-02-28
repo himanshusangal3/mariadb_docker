@@ -19,9 +19,12 @@ RUN DEBIAN_FRONTEND=noninteractive && \
   apt-get install -y mariadb-server && \
   rm -rf /var/lib/apt/lists/* && \
   sed -e 's/^datadir\t.*$/datadir = \/data/' -i /etc/mysql/my.cnf && \
-  sed -e 's/^bind-address\t.*$/bind-address = 0.0.0.0/' -i /etc/mysql/my.cnf && \
+  sed -e '/bind-address/ s/^#*/#/' -i /etc/mysql/mariadb.conf.d/50-server.cnf && \
+  sed -i '19 s/^##*//' -i /etc/mysql/mariadb.conf.d/50-server.cnf && \
+  sed '/bind-address/ a skip-networking=0' -i /etc/mysql/mariadb.conf.d/50-server.cnf && \
+  sed '/skip-networking/ a skip-bind-address' -i /etc/mysql/mariadb.conf.d/50-server.cnf && \
   cp /etc/mysql/my.cnf /usr/share/mysql/my-default.cnf && \
-  apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD scripts /scripts
 RUN chmod +x /scripts/*.sh
