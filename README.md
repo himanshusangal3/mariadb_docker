@@ -72,7 +72,7 @@ If you want to create a database at container's boot time, you can set the follo
 On this example we will preset our custom username and password and we will create a database:
 
 ```
-$ docker run -d --name mariadb -p 3306:3306 -e MYSQL_USERNAME=root -e MYSQL_PASSWORD=changeit -e MYSQL_DBNAME=wiki mariadb:5.0
+$ docker run -d --name mariadb -p 3306:3306 -e MYSQL_USERNAME=root -e MYSQL_PASSWORD=changeit -e MYSQL_DBNAME=wiki mariadb:1.0
 ```
 
 ###Verify that Go inside the container
